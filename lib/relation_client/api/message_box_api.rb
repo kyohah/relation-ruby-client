@@ -53,7 +53,7 @@ module RelationClient
       # header parameters
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json; charset=utf-8'])
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
 
       # form parameters
       form_params = opts[:form_params] || {}
@@ -162,23 +162,23 @@ module RelationClient
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'subject'] = subject
-      query_params[:'operated_at'] = operated_at
-      query_params[:'operator'] = operator
-      query_params[:'duration'] = duration
-      query_params[:'body'] = body
-      query_params[:'ticket_id'] = opts[:'ticket_id'] if !opts[:'ticket_id'].nil?
-      query_params[:'status_cd'] = opts[:'status_cd'] if !opts[:'status_cd'].nil?
-      query_params[:'customer_email'] = opts[:'customer_email'] if !opts[:'customer_email'].nil?
-      query_params[:'customer_tel'] = opts[:'customer_tel'] if !opts[:'customer_tel'].nil?
-      query_params[:'icon_cd'] = opts[:'icon_cd'] if !opts[:'icon_cd'].nil?
-      query_params[:'is_html'] = opts[:'is_html'] if !opts[:'is_html'].nil?
-      query_params[:'assignee'] = opts[:'assignee'] if !opts[:'assignee'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'subject'] = subject
+      header_params[:'operated_at'] = operated_at
+      header_params[:'operator'] = operator
+      header_params[:'duration'] = duration
+      header_params[:'body'] = body
+      header_params[:'ticket_id'] = opts[:'ticket_id'] if !opts[:'ticket_id'].nil?
+      header_params[:'status_cd'] = opts[:'status_cd'] if !opts[:'status_cd'].nil?
+      header_params[:'customer_email'] = opts[:'customer_email'] if !opts[:'customer_email'].nil?
+      header_params[:'customer_tel'] = opts[:'customer_tel'] if !opts[:'customer_tel'].nil?
+      header_params[:'icon_cd'] = opts[:'icon_cd'] if !opts[:'icon_cd'].nil?
+      header_params[:'is_html'] = opts[:'is_html'] if !opts[:'is_html'].nil?
+      header_params[:'assignee'] = opts[:'assignee'] if !opts[:'assignee'].nil?
 
       # form parameters
       form_params = opts[:form_params] || {}

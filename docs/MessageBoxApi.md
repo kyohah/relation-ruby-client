@@ -73,7 +73,7 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json; charset=utf-8
+- **Accept**: application/json
 
 
 ## message_box_id_records_post

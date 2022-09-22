@@ -19,9 +19,9 @@ Gem::Specification.new do |s|
   s.name        = "relation_client"
   s.version     = RelationClient::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["OpenAPI-Generator"]
+  s.authors     = ["kyohah"]
   s.email       = [""]
-  s.homepage    = "https://openapi-generator.tech"
+  s.homepage    = "https://github.com/kyohah/relation-ruby-client"
   s.summary     = "Re:lation API Ruby Gem"
   s.description = "https://developer.ingage.jp/"
   s.license     = "Unlicense"

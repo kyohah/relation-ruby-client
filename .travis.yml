@@ -11,4 +11,4 @@ script:
   - bundle install --path vendor/bundle
   - bundle exec rspec
   - gem build relation_client.gemspec
-  - gem install ./relation_client-1.0.0.gem
+  - gem install ./relation_client-1.0.1.gem
