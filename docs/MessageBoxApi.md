@@ -78,7 +78,7 @@ end
 
 ## message_box_id_records_post
 
-> <Record> message_box_id_records_post(message_box_id, subject, operated_at, operator, duration, body, opts)
+> <RecordResponse> message_box_id_records_post(message_box_id, opts)
 
 応答メモ作成
 
@@ -95,24 +95,13 @@ end
 
 api_instance = RelationClient::MessageBoxApi.new
 message_box_id = 56 # Integer | 受信箱ID(数字)
-subject = 'subject_example' # String | 件名
-operated_at = Date.parse('Sun Sep 11 09:00:00 JST 2022') # Date | 対応日時(ISO 8601 形式。過去の日時のみ。)
-operator = 'operator_example' # String | 対応者のメンション名
-duration = 56 # Integer | 対応時間(0〜1440の数値。分単位。)
-body = 'body_example' # String | 本文
 opts = {
-  ticket_id: 56, # Integer | チケットID
-  status_cd: 'open', # String | ステータス
-  customer_email: 'customer_email_example', # String | 顧客メールアドレス
-  customer_tel: 'customer_tel_example', # String | 顧客電話番号
-  icon_cd: 'received_phone', # String | 対応種別
-  is_html: true, # Boolean | 
-  assignee: 'assignee_example' # String | 
+  record_request: RelationClient::RecordRequest.new # RecordRequest | user to create
 }
 
 begin
   # 応答メモ作成
-  result = api_instance.message_box_id_records_post(message_box_id, subject, operated_at, operator, duration, body, opts)
+  result = api_instance.message_box_id_records_post(message_box_id, opts)
   p result
 rescue RelationClient::ApiError => e
   puts "Error when calling MessageBoxApi->message_box_id_records_post: #{e}"
@@ -123,15 +112,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Record>, Integer, Hash)> message_box_id_records_post_with_http_info(message_box_id, subject, operated_at, operator, duration, body, opts)
+> <Array(<RecordResponse>, Integer, Hash)> message_box_id_records_post_with_http_info(message_box_id, opts)
 
 ```ruby
 begin
   # 応答メモ作成
-  data, status_code, headers = api_instance.message_box_id_records_post_with_http_info(message_box_id, subject, operated_at, operator, duration, body, opts)
+  data, status_code, headers = api_instance.message_box_id_records_post_with_http_info(message_box_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Record>
+  p data # => <RecordResponse>
 rescue RelationClient::ApiError => e
   puts "Error when calling MessageBoxApi->message_box_id_records_post_with_http_info: #{e}"
 end
@@ -142,22 +131,11 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **message_box_id** | **Integer** | 受信箱ID(数字) |  |
-| **subject** | **String** | 件名 |  |
-| **operated_at** | **Date** | 対応日時(ISO 8601 形式。過去の日時のみ。) |  |
-| **operator** | **String** | 対応者のメンション名 |  |
-| **duration** | **Integer** | 対応時間(0〜1440の数値。分単位。) |  |
-| **body** | **String** | 本文 |  |
-| **ticket_id** | **Integer** | チケットID | [optional] |
-| **status_cd** | **String** | ステータス | [optional] |
-| **customer_email** | **String** | 顧客メールアドレス | [optional] |
-| **customer_tel** | **String** | 顧客電話番号 | [optional] |
-| **icon_cd** | **String** | 対応種別 | [optional] |
-| **is_html** | **Boolean** |  | [optional] |
-| **assignee** | **String** |  | [optional] |
+| **record_request** | [**RecordRequest**](RecordRequest.md) | user to create | [optional] |
 
 ### Return type
 
-[**Record**](Record.md)
+[**RecordResponse**](RecordResponse.md)
 
 ### Authorization
 
@@ -165,7 +143,7 @@ end
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 

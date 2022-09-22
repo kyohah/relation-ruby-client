@@ -19,7 +19,8 @@ require 'relation_client/configuration'
 # Models
 require 'relation_client/models/customer'
 require 'relation_client/models/message_box'
-require 'relation_client/models/record'
+require 'relation_client/models/record_request'
+require 'relation_client/models/record_response'
 
 # APIs
 require 'relation_client/api/message_box_api'

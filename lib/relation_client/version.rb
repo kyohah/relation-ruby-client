@@ -11,5 +11,5 @@ OpenAPI Generator version: 6.1.0
 =end
 
 module RelationClient
-  VERSION = '1.0.2'
+  VERSION = '1.0.3'
 end

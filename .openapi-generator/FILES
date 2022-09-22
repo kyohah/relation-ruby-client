@@ -9,7 +9,8 @@ Rakefile
 docs/Customer.md
 docs/MessageBox.md
 docs/MessageBoxApi.md
-docs/Record.md
+docs/RecordRequest.md
+docs/RecordResponse.md
 git_push.sh
 lib/relation_client.rb
 lib/relation_client/api/message_box_api.rb
@@ -18,9 +19,12 @@ lib/relation_client/api_error.rb
 lib/relation_client/configuration.rb
 lib/relation_client/models/customer.rb
 lib/relation_client/models/message_box.rb
-lib/relation_client/models/record.rb
+lib/relation_client/models/record_request.rb
+lib/relation_client/models/record_response.rb
 lib/relation_client/version.rb
 relation_client.gemspec
 spec/api_client_spec.rb
 spec/configuration_spec.rb
+spec/models/record_request_spec.rb
+spec/models/record_response_spec.rb
 spec/spec_helper.rb

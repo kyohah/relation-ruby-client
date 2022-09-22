@@ -86,76 +86,26 @@ module RelationClient
 
     # 応答メモ作成
     # @param message_box_id [Integer] 受信箱ID(数字)
-    # @param subject [String] 件名
-    # @param operated_at [Date] 対応日時(ISO 8601 形式。過去の日時のみ。)
-    # @param operator [String] 対応者のメンション名
-    # @param duration [Integer] 対応時間(0〜1440の数値。分単位。)
-    # @param body [String] 本文
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :ticket_id チケットID
-    # @option opts [String] :status_cd ステータス
-    # @option opts [String] :customer_email 顧客メールアドレス
-    # @option opts [String] :customer_tel 顧客電話番号
-    # @option opts [String] :icon_cd 対応種別
-    # @option opts [Boolean] :is_html 
-    # @option opts [String] :assignee 
-    # @return [Record]
-    def message_box_id_records_post(message_box_id, subject, operated_at, operator, duration, body, opts = {})
-      data, _status_code, _headers = message_box_id_records_post_with_http_info(message_box_id, subject, operated_at, operator, duration, body, opts)
+    # @option opts [RecordRequest] :record_request user to create
+    # @return [RecordResponse]
+    def message_box_id_records_post(message_box_id, opts = {})
+      data, _status_code, _headers = message_box_id_records_post_with_http_info(message_box_id, opts)
       data
     end
 
     # 応答メモ作成
     # @param message_box_id [Integer] 受信箱ID(数字)
-    # @param subject [String] 件名
-    # @param operated_at [Date] 対応日時(ISO 8601 形式。過去の日時のみ。)
-    # @param operator [String] 対応者のメンション名
-    # @param duration [Integer] 対応時間(0〜1440の数値。分単位。)
-    # @param body [String] 本文
     # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :ticket_id チケットID
-    # @option opts [String] :status_cd ステータス
-    # @option opts [String] :customer_email 顧客メールアドレス
-    # @option opts [String] :customer_tel 顧客電話番号
-    # @option opts [String] :icon_cd 対応種別
-    # @option opts [Boolean] :is_html 
-    # @option opts [String] :assignee 
-    # @return [Array<(Record, Integer, Hash)>] Record data, response status code and response headers
-    def message_box_id_records_post_with_http_info(message_box_id, subject, operated_at, operator, duration, body, opts = {})
+    # @option opts [RecordRequest] :record_request user to create
+    # @return [Array<(RecordResponse, Integer, Hash)>] RecordResponse data, response status code and response headers
+    def message_box_id_records_post_with_http_info(message_box_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MessageBoxApi.message_box_id_records_post ...'
       end
       # verify the required parameter 'message_box_id' is set
       if @api_client.config.client_side_validation && message_box_id.nil?
         fail ArgumentError, "Missing the required parameter 'message_box_id' when calling MessageBoxApi.message_box_id_records_post"
-      end
-      # verify the required parameter 'subject' is set
-      if @api_client.config.client_side_validation && subject.nil?
-        fail ArgumentError, "Missing the required parameter 'subject' when calling MessageBoxApi.message_box_id_records_post"
-      end
-      # verify the required parameter 'operated_at' is set
-      if @api_client.config.client_side_validation && operated_at.nil?
-        fail ArgumentError, "Missing the required parameter 'operated_at' when calling MessageBoxApi.message_box_id_records_post"
-      end
-      # verify the required parameter 'operator' is set
-      if @api_client.config.client_side_validation && operator.nil?
-        fail ArgumentError, "Missing the required parameter 'operator' when calling MessageBoxApi.message_box_id_records_post"
-      end
-      # verify the required parameter 'duration' is set
-      if @api_client.config.client_side_validation && duration.nil?
-        fail ArgumentError, "Missing the required parameter 'duration' when calling MessageBoxApi.message_box_id_records_post"
-      end
-      # verify the required parameter 'body' is set
-      if @api_client.config.client_side_validation && body.nil?
-        fail ArgumentError, "Missing the required parameter 'body' when calling MessageBoxApi.message_box_id_records_post"
-      end
-      allowable_values = ["open", "ongoing", "closed", "unwanted", "trash", "spam", "deleted"]
-      if @api_client.config.client_side_validation && opts[:'status_cd'] && !allowable_values.include?(opts[:'status_cd'])
-        fail ArgumentError, "invalid value for \"status_cd\", must be one of #{allowable_values}"
-      end
-      allowable_values = ["received_phone", "called_phone", "meeting", "sales", "postal", "note"]
-      if @api_client.config.client_side_validation && opts[:'icon_cd'] && !allowable_values.include?(opts[:'icon_cd'])
-        fail ArgumentError, "invalid value for \"icon_cd\", must be one of #{allowable_values}"
       end
       # resource path
       local_var_path = '/{message_box_id}/records'.sub('{' + 'message_box_id' + '}', CGI.escape(message_box_id.to_s))
@@ -167,27 +117,20 @@ module RelationClient
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      header_params[:'subject'] = subject
-      header_params[:'operated_at'] = operated_at
-      header_params[:'operator'] = operator
-      header_params[:'duration'] = duration
-      header_params[:'body'] = body
-      header_params[:'ticket_id'] = opts[:'ticket_id'] if !opts[:'ticket_id'].nil?
-      header_params[:'status_cd'] = opts[:'status_cd'] if !opts[:'status_cd'].nil?
-      header_params[:'customer_email'] = opts[:'customer_email'] if !opts[:'customer_email'].nil?
-      header_params[:'customer_tel'] = opts[:'customer_tel'] if !opts[:'customer_tel'].nil?
-      header_params[:'icon_cd'] = opts[:'icon_cd'] if !opts[:'icon_cd'].nil?
-      header_params[:'is_html'] = opts[:'is_html'] if !opts[:'is_html'].nil?
-      header_params[:'assignee'] = opts[:'assignee'] if !opts[:'assignee'].nil?
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:debug_body]
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'record_request'])
 
       # return_type
-      return_type = opts[:debug_return_type] || 'Record'
+      return_type = opts[:debug_return_type] || 'RecordResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['bearer']
