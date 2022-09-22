@@ -72,18 +72,18 @@ paths:
           schema:
             type: integer
         - name: ticket_id
-          in: query
+          in: header
           description: チケットID
           schema:
             type: integer
         - name: subject
           required: true
           description: 件名
-          in: query
+          in: header
           schema:
             type: string
         - name: status_cd
-          in: query
+          in: header
           description: ステータス
           schema:
             type: string
@@ -96,7 +96,7 @@ paths:
             - spam
             - deleted
         - name: operated_at
-          in: query
+          in: header
           description: 対応日時(ISO 8601 形式。過去の日時のみ。)
           required: true
           schema:
@@ -106,33 +106,33 @@ paths:
         - name: operator
           required: true
           description: 対応者のメンション名
-          in: query
+          in: header
           schema:
             type : string
         - name: duration
           required: true
           description: 対応時間(0〜1440の数値。分単位。)
-          in: query
+          in: header
           schema:
             type: integer
         - name: body
           required: true
           description: 本文
-          in: query
+          in: header
           schema:
             type: string
         - name: customer_email
-          in: query
+          in: header
           description: 顧客メールアドレス
           schema:
             type: string
         - name: customer_tel
-          in: query
+          in: header
           description: 顧客電話番号
           schema:
             type: string
         - name: icon_cd
-          in: query
+          in: header
           description: 対応種別
           schema:
             type: string
@@ -144,11 +144,11 @@ paths:
             - postal
             - note
         - name: is_html
-          in: query
+          in: header
           schema:
             type: boolean
         - name: assignee
-          in: query
+          in: header
           schema:
             type: string
 
